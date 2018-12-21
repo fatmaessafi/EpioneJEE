@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -22,6 +23,10 @@ public class CustomRole implements Serializable {
 	@Column(name="Name")
 	private Object name;
 
+	//bi-directional many-to-one association to CustomUserRole
+	@OneToMany(mappedBy="customRole", fetch=FetchType.EAGER)
+	private List<CustomUserRole> customUserRoles;
+
 	public CustomRole() {
 	}
 
@@ -39,6 +44,28 @@ public class CustomRole implements Serializable {
 
 	public void setName(Object name) {
 		this.name = name;
+	}
+
+	public List<CustomUserRole> getCustomUserRoles() {
+		return this.customUserRoles;
+	}
+
+	public void setCustomUserRoles(List<CustomUserRole> customUserRoles) {
+		this.customUserRoles = customUserRoles;
+	}
+
+	public CustomUserRole addCustomUserRole(CustomUserRole customUserRole) {
+		getCustomUserRoles().add(customUserRole);
+		customUserRole.setCustomRole(this);
+
+		return customUserRole;
+	}
+
+	public CustomUserRole removeCustomUserRole(CustomUserRole customUserRole) {
+		getCustomUserRoles().remove(customUserRole);
+		customUserRole.setCustomRole(null);
+
+		return customUserRole;
 	}
 
 }

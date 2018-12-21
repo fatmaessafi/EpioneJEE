@@ -24,7 +24,7 @@ public class Treatment implements Serializable {
 	private Object illness;
 
 	//bi-directional many-to-many association to Appointment
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(
 		name="Treat"
 		, joinColumns={
@@ -35,6 +35,10 @@ public class Treatment implements Serializable {
 			}
 		)
 	private List<Appointment> appointments;
+
+	//bi-directional many-to-one association to Step
+	@OneToMany(mappedBy="treatment", fetch=FetchType.EAGER)
+	private List<Step> steps;
 
 	public Treatment() {
 	}
@@ -61,6 +65,28 @@ public class Treatment implements Serializable {
 
 	public void setAppointments(List<Appointment> appointments) {
 		this.appointments = appointments;
+	}
+
+	public List<Step> getSteps() {
+		return this.steps;
+	}
+
+	public void setSteps(List<Step> steps) {
+		this.steps = steps;
+	}
+
+	public Step addStep(Step step) {
+		getSteps().add(step);
+		step.setTreatment(this);
+
+		return step;
+	}
+
+	public Step removeStep(Step step) {
+		getSteps().remove(step);
+		step.setTreatment(null);
+
+		return step;
 	}
 
 }

@@ -105,28 +105,40 @@ public class User implements Serializable {
 	private Object userName;
 
 	//bi-directional many-to-one association to Appointment
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
 	private List<Appointment> appointments;
 
 	//bi-directional many-to-one association to CustomUserClaim
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
 	private List<CustomUserClaim> customUserClaims;
 
 	//bi-directional many-to-one association to CustomUserLogin
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
 	private List<CustomUserLogin> customUserLogins;
 
 	//bi-directional many-to-one association to DayOff
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
 	private List<DayOff> dayOffs;
 
 	//bi-directional many-to-one association to Message
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
 	private List<Message> messages;
 
 	//bi-directional many-to-one association to VisitReason
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
 	private List<VisitReason> visitReasons;
+
+	//bi-directional many-to-one association to Analytic
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	private List<Analytic> analytics;
+
+	//bi-directional many-to-one association to CustomUserRole
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	private List<CustomUserRole> customUserRoles;
+
+	//bi-directional many-to-one association to Step
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	private List<Step> steps;
 
 	public User() {
 	}
@@ -493,6 +505,72 @@ public class User implements Serializable {
 		visitReason.setUser(null);
 
 		return visitReason;
+	}
+
+	public List<Analytic> getAnalytics() {
+		return this.analytics;
+	}
+
+	public void setAnalytics(List<Analytic> analytics) {
+		this.analytics = analytics;
+	}
+
+	public Analytic addAnalytic(Analytic analytic) {
+		getAnalytics().add(analytic);
+		analytic.setUser(this);
+
+		return analytic;
+	}
+
+	public Analytic removeAnalytic(Analytic analytic) {
+		getAnalytics().remove(analytic);
+		analytic.setUser(null);
+
+		return analytic;
+	}
+
+	public List<CustomUserRole> getCustomUserRoles() {
+		return this.customUserRoles;
+	}
+
+	public void setCustomUserRoles(List<CustomUserRole> customUserRoles) {
+		this.customUserRoles = customUserRoles;
+	}
+
+	public CustomUserRole addCustomUserRole(CustomUserRole customUserRole) {
+		getCustomUserRoles().add(customUserRole);
+		customUserRole.setUser(this);
+
+		return customUserRole;
+	}
+
+	public CustomUserRole removeCustomUserRole(CustomUserRole customUserRole) {
+		getCustomUserRoles().remove(customUserRole);
+		customUserRole.setUser(null);
+
+		return customUserRole;
+	}
+
+	public List<Step> getSteps() {
+		return this.steps;
+	}
+
+	public void setSteps(List<Step> steps) {
+		this.steps = steps;
+	}
+
+	public Step addStep(Step step) {
+		getSteps().add(step);
+		step.setUser(this);
+
+		return step;
+	}
+
+	public Step removeStep(Step step) {
+		getSteps().remove(step);
+		step.setUser(null);
+
+		return step;
 	}
 
 }

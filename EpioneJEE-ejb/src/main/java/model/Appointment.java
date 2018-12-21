@@ -45,7 +45,7 @@ public class Appointment implements Serializable {
 	private Report report;
 
 	//bi-directional many-to-many association to Treatment
-	@ManyToMany(mappedBy="appointments")
+	@ManyToMany(mappedBy="appointments", fetch=FetchType.EAGER)
 	private List<Treatment> treatments;
 
 	public Appointment() {
