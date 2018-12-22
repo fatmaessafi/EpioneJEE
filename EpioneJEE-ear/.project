@@ -3,6 +3,8 @@
 	<name>EpioneJEE-ear</name>
 	<comment></comment>
 	<projects>
+		<project>EpioneJEE-ejb</project>
+		<project>EpioneJEE-web</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -1,0 +1,45 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/TemplateClient/TemplateClient.xhtml">
+
+	<ui:define name="title">
+		<title>Login</title>
+	</ui:define>
+
+	<ui:define name="content">
+		<div class="bg_color_2">
+			<div class="container margin_60_35">
+				<div id="login-2">
+					<h1>Login to Epione</h1>
+					<h:form>
+						<div class="box_form clearfix">
+							<div class="box_login">
+								<a href="#0" class="social_bt facebook">Login with Facebook</a>
+								<a href="#0" class="social_bt google">Login with Google</a>
+								<a href="#0" class="social_bt linkedin">Login with Linkedin</a>
+							</div>
+							<div class="box_login last">
+								<div class="form-group">
+									<p:inputText type="email" class="form-control" placeholder="Your email address"/>
+								</div>
+								<div class="form-group">
+									<p:inputText type="password" class="form-control" placeholder="Your password"/>
+									<a href="#0" class="forgot"><small>Forgot password?</small></a>
+								</div>
+								<div class="form-group">
+									<p:commandButton class="btn_1" value="Login"/>
+								</div>
+							</div>
+						</div>
+					</h:form>
+					<p class="text-center link_bright">Do not have an account yet? <a href="#0"><strong>Register now!</strong></a></p>
+				</div>
+				<!-- /login -->
+			</div>
+		</div>
+	</ui:define>
+	</ui:composition>
