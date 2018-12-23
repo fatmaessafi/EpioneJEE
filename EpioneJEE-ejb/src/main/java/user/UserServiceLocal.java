@@ -2,7 +2,7 @@ package user;
 
 import javax.ejb.Local;
 
-import model.User;
+import Entities.User;
 
 @Local
 public interface UserServiceLocal {

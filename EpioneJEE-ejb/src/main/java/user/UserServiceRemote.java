@@ -2,7 +2,7 @@ package user;
 
 import javax.ejb.Remote;
 
-import model.User;
+import Entities.User;
 
 @Remote
 public interface UserServiceRemote {

@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import model.User;
+import Entities.User;
 import user.UserService;;
 
 @ManagedBean
@@ -18,18 +18,7 @@ public class LoginBean {
 	private boolean loggedIn;
 	@EJB
 	UserService userService;
-	public String doLogin(){
-		String navigateTo = "null";
-		user=userService.Login(email, mdp, rememberMe);
-		if(user.getUserName()!=null){
-			navigateTo="pages/admin/welcome?faces-redirect=true";
-			loggedIn = true;
-		}
-		else{
-			FacesContext.getCurrentInstance().addMessage("form:btn",new FacesMessage("bad credentials"));
-		}
-		return navigateTo;
-	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -61,5 +50,16 @@ public class LoginBean {
 		this.loggedIn = loggedIn;
 	}
 
-
+	public String doLogin(){
+		String navigateTo = "null";
+		user=userService.Login(email, mdp, rememberMe);
+		if(user.getUserName()!=null){
+			navigateTo="pages/admin/welcome?faces-redirect=true";
+			loggedIn = true;
+		}
+		else{
+			FacesContext.getCurrentInstance().addMessage("form:btn",new FacesMessage("bad credentials"));
+		}
+		return navigateTo;
+	}
 }

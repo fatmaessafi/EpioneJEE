@@ -19,7 +19,7 @@
 		<class>Entities.VisitReason</class>
 	
 		<properties>
-		 	<property name="hibernate.hbm2ddl.auto" value="create-drop"/> 
+		 	<property name="hibernate.hbm2ddl.auto" value="update"/> 
 		</properties>
 	</persistence-unit>
 </persistence>
