@@ -1,4 +1,4 @@
-package model;
+package Entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -29,11 +29,13 @@ public class Appointment implements Serializable {
 	@Column(name="PatientId")
 	private int patientId;
 
-	@Column(name="ReportId")
-	private int reportId;
-
 	@Column(name="VisitReason")
 	private Object visitReason;
+
+	//bi-directional many-to-one association to Step
+	@ManyToOne
+	@JoinColumn(name="StepId")
+	private Step step;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
@@ -44,9 +46,9 @@ public class Appointment implements Serializable {
 	@OneToOne(mappedBy="appointment")
 	private Report report;
 
-	//bi-directional many-to-many association to Treatment
-	@ManyToMany(mappedBy="appointments", fetch=FetchType.EAGER)
-	private List<Treatment> treatments;
+	//bi-directional many-to-one association to Step
+	@OneToMany(mappedBy="appointment")
+	private List<Step> steps;
 
 	public Appointment() {
 	}
@@ -83,20 +85,20 @@ public class Appointment implements Serializable {
 		this.patientId = patientId;
 	}
 
-	public int getReportId() {
-		return this.reportId;
-	}
-
-	public void setReportId(int reportId) {
-		this.reportId = reportId;
-	}
-
 	public Object getVisitReason() {
 		return this.visitReason;
 	}
 
 	public void setVisitReason(Object visitReason) {
 		this.visitReason = visitReason;
+	}
+
+	public Step getStep() {
+		return this.step;
+	}
+
+	public void setStep(Step step) {
+		this.step = step;
 	}
 
 	public User getUser() {
@@ -115,12 +117,26 @@ public class Appointment implements Serializable {
 		this.report = report;
 	}
 
-	public List<Treatment> getTreatments() {
-		return this.treatments;
+	public List<Step> getSteps() {
+		return this.steps;
 	}
 
-	public void setTreatments(List<Treatment> treatments) {
-		this.treatments = treatments;
+	public void setSteps(List<Step> steps) {
+		this.steps = steps;
+	}
+
+	public Step addStep(Step step) {
+		getSteps().add(step);
+		step.setAppointment(this);
+
+		return step;
+	}
+
+	public Step removeStep(Step step) {
+		getSteps().remove(step);
+		step.setAppointment(null);
+
+		return step;
 	}
 
 }

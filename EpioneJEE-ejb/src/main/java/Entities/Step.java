@@ -1,7 +1,8 @@
-package model;
+package Entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -19,6 +20,9 @@ public class Step implements Serializable {
 	@Column(name="StepId")
 	private int stepId;
 
+	@Column(name="LastModificationBy")
+	private int lastModificationBy;
+
 	@Column(name="LastModificationDate")
 	private String lastModificationDate;
 
@@ -34,18 +38,25 @@ public class Step implements Serializable {
 	@Column(name="StepDescription")
 	private Object stepDescription;
 
+	@Column(name="StepSpeciality")
+	private Object stepSpeciality;
+
 	@Column(name="Validation")
 	private boolean validation;
+
+	//bi-directional many-to-one association to Appointment
+	@OneToMany(mappedBy="step")
+	private List<Appointment> appointments;
+
+	//bi-directional many-to-one association to Appointment
+	@ManyToOne
+	@JoinColumn(name="AppointmentId")
+	private Appointment appointment;
 
 	//bi-directional many-to-one association to Treatment
 	@ManyToOne
 	@JoinColumn(name="TreatmentId")
 	private Treatment treatment;
-
-	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="DoctorId")
-	private User user;
 
 	public Step() {
 	}
@@ -56,6 +67,14 @@ public class Step implements Serializable {
 
 	public void setStepId(int stepId) {
 		this.stepId = stepId;
+	}
+
+	public int getLastModificationBy() {
+		return this.lastModificationBy;
+	}
+
+	public void setLastModificationBy(int lastModificationBy) {
+		this.lastModificationBy = lastModificationBy;
 	}
 
 	public String getLastModificationDate() {
@@ -98,6 +117,14 @@ public class Step implements Serializable {
 		this.stepDescription = stepDescription;
 	}
 
+	public Object getStepSpeciality() {
+		return this.stepSpeciality;
+	}
+
+	public void setStepSpeciality(Object stepSpeciality) {
+		this.stepSpeciality = stepSpeciality;
+	}
+
 	public boolean getValidation() {
 		return this.validation;
 	}
@@ -106,20 +133,42 @@ public class Step implements Serializable {
 		this.validation = validation;
 	}
 
+	public List<Appointment> getAppointments() {
+		return this.appointments;
+	}
+
+	public void setAppointments(List<Appointment> appointments) {
+		this.appointments = appointments;
+	}
+
+	public Appointment addAppointment(Appointment appointment) {
+		getAppointments().add(appointment);
+		appointment.setStep(this);
+
+		return appointment;
+	}
+
+	public Appointment removeAppointment(Appointment appointment) {
+		getAppointments().remove(appointment);
+		appointment.setStep(null);
+
+		return appointment;
+	}
+
+	public Appointment getAppointment() {
+		return this.appointment;
+	}
+
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
+	}
+
 	public Treatment getTreatment() {
 		return this.treatment;
 	}
 
 	public void setTreatment(Treatment treatment) {
 		this.treatment = treatment;
-	}
-
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 }

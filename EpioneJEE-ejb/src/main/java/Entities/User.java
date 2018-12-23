@@ -1,4 +1,4 @@
-package model;
+package Entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -28,9 +28,6 @@ public class User implements Serializable {
 
 	@Column(name="BirthDate")
 	private String birthDate;
-
-	@Column(name="Cin")
-	private int cin;
 
 	@Column(name="City")
 	private Object city;
@@ -71,6 +68,9 @@ public class User implements Serializable {
 	@Column(name="LockoutEndDateUtc")
 	private String lockoutEndDateUtc;
 
+	@Column(name="Password")
+	private Object password;
+
 	@Column(name="PasswordHash")
 	private Object passwordHash;
 
@@ -104,41 +104,45 @@ public class User implements Serializable {
 	@Column(name="UserName")
 	private Object userName;
 
+	//bi-directional many-to-one association to Analytic
+	@OneToMany(mappedBy="user")
+	private List<Analytic> analytics;
+
 	//bi-directional many-to-one association to Appointment
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="user")
 	private List<Appointment> appointments;
 
 	//bi-directional many-to-one association to CustomUserClaim
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="user")
 	private List<CustomUserClaim> customUserClaims;
 
 	//bi-directional many-to-one association to CustomUserLogin
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="user")
 	private List<CustomUserLogin> customUserLogins;
 
-	//bi-directional many-to-one association to DayOff
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
-	private List<DayOff> dayOffs;
-
-	//bi-directional many-to-one association to Message
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
-	private List<Message> messages;
-
-	//bi-directional many-to-one association to VisitReason
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
-	private List<VisitReason> visitReasons;
-
-	//bi-directional many-to-one association to Analytic
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
-	private List<Analytic> analytics;
-
 	//bi-directional many-to-one association to CustomUserRole
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="user")
 	private List<CustomUserRole> customUserRoles;
 
-	//bi-directional many-to-one association to Step
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
-	private List<Step> steps;
+	//bi-directional many-to-one association to DayOff
+	@OneToMany(mappedBy="user")
+	private List<DayOff> dayOffs;
+
+	//bi-directional many-to-one association to Event
+	@OneToMany(mappedBy="user")
+	private List<Event> events;
+
+	//bi-directional many-to-one association to Message
+	@OneToMany(mappedBy="user")
+	private List<Message> messages;
+
+	//bi-directional many-to-one association to Treatment
+	@OneToMany(mappedBy="user")
+	private List<Treatment> treatments;
+
+	//bi-directional many-to-one association to VisitReason
+	@OneToMany(mappedBy="user")
+	private List<VisitReason> visitReasons;
 
 	public User() {
 	}
@@ -173,14 +177,6 @@ public class User implements Serializable {
 
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
-	}
-
-	public int getCin() {
-		return this.cin;
-	}
-
-	public void setCin(int cin) {
-		this.cin = cin;
 	}
 
 	public Object getCity() {
@@ -287,6 +283,14 @@ public class User implements Serializable {
 		this.lockoutEndDateUtc = lockoutEndDateUtc;
 	}
 
+	public Object getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(Object password) {
+		this.password = password;
+	}
+
 	public Object getPasswordHash() {
 		return this.passwordHash;
 	}
@@ -375,6 +379,28 @@ public class User implements Serializable {
 		this.userName = userName;
 	}
 
+	public List<Analytic> getAnalytics() {
+		return this.analytics;
+	}
+
+	public void setAnalytics(List<Analytic> analytics) {
+		this.analytics = analytics;
+	}
+
+	public Analytic addAnalytic(Analytic analytic) {
+		getAnalytics().add(analytic);
+		analytic.setUser(this);
+
+		return analytic;
+	}
+
+	public Analytic removeAnalytic(Analytic analytic) {
+		getAnalytics().remove(analytic);
+		analytic.setUser(null);
+
+		return analytic;
+	}
+
 	public List<Appointment> getAppointments() {
 		return this.appointments;
 	}
@@ -441,6 +467,28 @@ public class User implements Serializable {
 		return customUserLogin;
 	}
 
+	public List<CustomUserRole> getCustomUserRoles() {
+		return this.customUserRoles;
+	}
+
+	public void setCustomUserRoles(List<CustomUserRole> customUserRoles) {
+		this.customUserRoles = customUserRoles;
+	}
+
+	public CustomUserRole addCustomUserRole(CustomUserRole customUserRole) {
+		getCustomUserRoles().add(customUserRole);
+		customUserRole.setUser(this);
+
+		return customUserRole;
+	}
+
+	public CustomUserRole removeCustomUserRole(CustomUserRole customUserRole) {
+		getCustomUserRoles().remove(customUserRole);
+		customUserRole.setUser(null);
+
+		return customUserRole;
+	}
+
 	public List<DayOff> getDayOffs() {
 		return this.dayOffs;
 	}
@@ -461,6 +509,28 @@ public class User implements Serializable {
 		dayOff.setUser(null);
 
 		return dayOff;
+	}
+
+	public List<Event> getEvents() {
+		return this.events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
+	public Event addEvent(Event event) {
+		getEvents().add(event);
+		event.setUser(this);
+
+		return event;
+	}
+
+	public Event removeEvent(Event event) {
+		getEvents().remove(event);
+		event.setUser(null);
+
+		return event;
 	}
 
 	public List<Message> getMessages() {
@@ -485,6 +555,28 @@ public class User implements Serializable {
 		return message;
 	}
 
+	public List<Treatment> getTreatments() {
+		return this.treatments;
+	}
+
+	public void setTreatments(List<Treatment> treatments) {
+		this.treatments = treatments;
+	}
+
+	public Treatment addTreatment(Treatment treatment) {
+		getTreatments().add(treatment);
+		treatment.setUser(this);
+
+		return treatment;
+	}
+
+	public Treatment removeTreatment(Treatment treatment) {
+		getTreatments().remove(treatment);
+		treatment.setUser(null);
+
+		return treatment;
+	}
+
 	public List<VisitReason> getVisitReasons() {
 		return this.visitReasons;
 	}
@@ -505,72 +597,6 @@ public class User implements Serializable {
 		visitReason.setUser(null);
 
 		return visitReason;
-	}
-
-	public List<Analytic> getAnalytics() {
-		return this.analytics;
-	}
-
-	public void setAnalytics(List<Analytic> analytics) {
-		this.analytics = analytics;
-	}
-
-	public Analytic addAnalytic(Analytic analytic) {
-		getAnalytics().add(analytic);
-		analytic.setUser(this);
-
-		return analytic;
-	}
-
-	public Analytic removeAnalytic(Analytic analytic) {
-		getAnalytics().remove(analytic);
-		analytic.setUser(null);
-
-		return analytic;
-	}
-
-	public List<CustomUserRole> getCustomUserRoles() {
-		return this.customUserRoles;
-	}
-
-	public void setCustomUserRoles(List<CustomUserRole> customUserRoles) {
-		this.customUserRoles = customUserRoles;
-	}
-
-	public CustomUserRole addCustomUserRole(CustomUserRole customUserRole) {
-		getCustomUserRoles().add(customUserRole);
-		customUserRole.setUser(this);
-
-		return customUserRole;
-	}
-
-	public CustomUserRole removeCustomUserRole(CustomUserRole customUserRole) {
-		getCustomUserRoles().remove(customUserRole);
-		customUserRole.setUser(null);
-
-		return customUserRole;
-	}
-
-	public List<Step> getSteps() {
-		return this.steps;
-	}
-
-	public void setSteps(List<Step> steps) {
-		this.steps = steps;
-	}
-
-	public Step addStep(Step step) {
-		getSteps().add(step);
-		step.setUser(this);
-
-		return step;
-	}
-
-	public Step removeStep(Step step) {
-		getSteps().remove(step);
-		step.setUser(null);
-
-		return step;
 	}
 
 }

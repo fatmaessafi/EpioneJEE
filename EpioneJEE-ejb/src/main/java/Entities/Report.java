@@ -1,4 +1,4 @@
-package model;
+package Entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -18,9 +18,6 @@ public class Report implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ReportId")
 	private int reportId;
-
-	@Column(name="AppointmentId")
-	private int appointmentId;
 
 	@Column(name="ReportDate")
 	private String reportDate;
@@ -42,14 +39,6 @@ public class Report implements Serializable {
 
 	public void setReportId(int reportId) {
 		this.reportId = reportId;
-	}
-
-	public int getAppointmentId() {
-		return this.appointmentId;
-	}
-
-	public void setAppointmentId(int appointmentId) {
-		this.appointmentId = appointmentId;
 	}
 
 	public String getReportDate() {

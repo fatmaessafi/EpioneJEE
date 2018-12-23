@@ -1,4 +1,4 @@
-package model;
+package Entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -24,7 +24,7 @@ public class CustomRole implements Serializable {
 	private Object name;
 
 	//bi-directional many-to-one association to CustomUserRole
-	@OneToMany(mappedBy="customRole", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="customRole")
 	private List<CustomUserRole> customUserRoles;
 
 	public CustomRole() {

@@ -1,4 +1,4 @@
-package model;
+package Entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -24,9 +24,6 @@ public class Message implements Serializable {
 
 	@Column(name="MessageDate")
 	private String messageDate;
-
-	@Column(name="PatientId")
-	private int patientId;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
@@ -58,14 +55,6 @@ public class Message implements Serializable {
 
 	public void setMessageDate(String messageDate) {
 		this.messageDate = messageDate;
-	}
-
-	public int getPatientId() {
-		return this.patientId;
-	}
-
-	public void setPatientId(int patientId) {
-		this.patientId = patientId;
 	}
 
 	public User getUser() {

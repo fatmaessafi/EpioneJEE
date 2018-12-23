@@ -2,34 +2,24 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="EpioneJEE-ejb">
 		<jta-data-source>java:/sqlserver/ds</jta-data-source>
-		<class>model.Analytic</class>
-		<class>model.Step</class>
-		<class>model.Appointment</class>
-		<class>model.CustomRole</class>
-		<class>model.CustomUserClaim</class>
-		<class>model.CustomUserLogin</class>
-		<class>model.CustomUserRole</class>
-		<class>model.DayOff</class>
-		<class>model.Message</class>
-		<class>model.Report</class>
-		<class>model.Treatment</class>
-		<class>model.User</class>
-		<class>model.VisitReason</class>
-		<!-- <class>model.Analytic</class>
-		<class>model.Appointment</class>
-		<class>model.CustomRole</class>
-		<class>model.CustomUserClaim</class>
-		<class>model.CustomUserLogin</class>
-		<class>model.CustomUserRole</class>
-		<class>model.DayOff</class>
-		<class>model.Message</class>
-		<class>model.Report</class>
-		<class>model.Step</class>
-		<class>model.Treatment</class>
-		<class>model.User</class>
-		<class>model.VisitReason</class> -->
+		<class>Entities.Analytic</class>
+		<class>Entities.Appointment</class>
+		<class>Entities.CustomRole</class>
+		<class>Entities.CustomUserClaim</class>
+		<class>Entities.CustomUserLogin</class>
+		<class>Entities.CustomUserRole</class>
+		<class>Entities.DayOff</class>
+		<class>Entities.Event</class>
+		<class>Entities.Message</class>
+		<class>Entities.Report</class>
+		<class>Entities.StepRequest</class>
+		<class>Entities.Step</class>
+		<class>Entities.Treatment</class>
+		<class>Entities.User</class>
+		<class>Entities.VisitReason</class>
+	
 		<properties>
-		 	<property name="hibernate.hbm2ddl.auto" value="update"/> 
+		 	<property name="hibernate.hbm2ddl.auto" value="create-drop"/> 
 		</properties>
 	</persistence-unit>
 </persistence>

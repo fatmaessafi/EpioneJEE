@@ -1,4 +1,4 @@
-package model;
+package Entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -23,22 +23,20 @@ public class Treatment implements Serializable {
 	@Column(name="Illness")
 	private Object illness;
 
-	//bi-directional many-to-many association to Appointment
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(
-		name="Treat"
-		, joinColumns={
-			@JoinColumn(name="Treatment_TreatmentId")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="Appointment_AppointmentId")
-			}
-		)
-	private List<Appointment> appointments;
+	@Column(name="PatientId")
+	private int patientId;
+
+	@Column(name="Validation")
+	private boolean validation;
 
 	//bi-directional many-to-one association to Step
-	@OneToMany(mappedBy="treatment", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="treatment")
 	private List<Step> steps;
+
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="DoctorId")
+	private User user;
 
 	public Treatment() {
 	}
@@ -59,12 +57,20 @@ public class Treatment implements Serializable {
 		this.illness = illness;
 	}
 
-	public List<Appointment> getAppointments() {
-		return this.appointments;
+	public int getPatientId() {
+		return this.patientId;
 	}
 
-	public void setAppointments(List<Appointment> appointments) {
-		this.appointments = appointments;
+	public void setPatientId(int patientId) {
+		this.patientId = patientId;
+	}
+
+	public boolean getValidation() {
+		return this.validation;
+	}
+
+	public void setValidation(boolean validation) {
+		this.validation = validation;
 	}
 
 	public List<Step> getSteps() {
@@ -87,6 +93,14 @@ public class Treatment implements Serializable {
 		step.setTreatment(null);
 
 		return step;
+	}
+
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
