@@ -21,7 +21,7 @@ public class Treatment implements Serializable {
 	private int treatmentId;
 
 	@Column(name="Illness")
-	private Object illness;
+	private String illness;
 
 	@Column(name="PatientId")
 	private int patientId;
@@ -49,11 +49,11 @@ public class Treatment implements Serializable {
 		this.treatmentId = treatmentId;
 	}
 
-	public Object getIllness() {
+	public String getIllness() {
 		return this.illness;
 	}
 
-	public void setIllness(Object illness) {
+	public void setIllness(String illness) {
 		this.illness = illness;
 	}
 

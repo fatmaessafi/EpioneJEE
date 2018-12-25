@@ -18,7 +18,7 @@ public class VisitReason implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int VRId;
 
-	private Object VRDescription;
+	private String VRDescription;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
@@ -36,11 +36,11 @@ public class VisitReason implements Serializable {
 		this.VRId = VRId;
 	}
 
-	public Object getVRDescription() {
+	public String getVRDescription() {
 		return this.VRDescription;
 	}
 
-	public void setVRDescription(Object VRDescription) {
+	public void setVRDescription(String VRDescription) {
 		this.VRDescription = VRDescription;
 	}
 

@@ -26,16 +26,16 @@ public class StepRequest implements Serializable {
 	private String newLastModificationDate;
 
 	@Column(name="NewModificationReason")
-	private Object newModificationReason;
+	private String newModificationReason;
 
 	@Column(name="NewStepDate")
 	private String newStepDate;
 
 	@Column(name="NewStepDescription")
-	private Object newStepDescription;
+	private String newStepDescription;
 
 	@Column(name="NewStepSpeciality")
-	private Object newStepSpeciality;
+	private String newStepSpeciality;
 
 	@Column(name="NewTreatmentId")
 	private int newTreatmentId;
@@ -47,7 +47,7 @@ public class StepRequest implements Serializable {
 	private int stepId;
 
 	@Column(name="Type")
-	private Object type;
+	private String type;
 
 	public StepRequest() {
 	}
@@ -76,11 +76,11 @@ public class StepRequest implements Serializable {
 		this.newLastModificationDate = newLastModificationDate;
 	}
 
-	public Object getNewModificationReason() {
+	public String getNewModificationReason() {
 		return this.newModificationReason;
 	}
 
-	public void setNewModificationReason(Object newModificationReason) {
+	public void setNewModificationReason(String newModificationReason) {
 		this.newModificationReason = newModificationReason;
 	}
 
@@ -92,19 +92,19 @@ public class StepRequest implements Serializable {
 		this.newStepDate = newStepDate;
 	}
 
-	public Object getNewStepDescription() {
+	public String getNewStepDescription() {
 		return this.newStepDescription;
 	}
 
-	public void setNewStepDescription(Object newStepDescription) {
+	public void setNewStepDescription(String newStepDescription) {
 		this.newStepDescription = newStepDescription;
 	}
 
-	public Object getNewStepSpeciality() {
+	public String getNewStepSpeciality() {
 		return this.newStepSpeciality;
 	}
 
-	public void setNewStepSpeciality(Object newStepSpeciality) {
+	public void setNewStepSpeciality(String newStepSpeciality) {
 		this.newStepSpeciality = newStepSpeciality;
 	}
 
@@ -132,11 +132,11 @@ public class StepRequest implements Serializable {
 		this.stepId = stepId;
 	}
 
-	public Object getType() {
+	public String getType() {
 		return this.type;
 	}
 
-	public void setType(Object type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 

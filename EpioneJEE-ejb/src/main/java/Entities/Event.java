@@ -20,7 +20,7 @@ public class Event implements Serializable {
 	private int eventId;
 
 	@Column(name="Description")
-	private Object description;
+	private String description;
 
 	@Column(name="End")
 	private String end;
@@ -32,10 +32,10 @@ public class Event implements Serializable {
 	private String start;
 
 	@Column(name="Subject")
-	private Object subject;
+	private String subject;
 
 	@Column(name="ThemeColor")
-	private Object themeColor;
+	private String themeColor;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
@@ -53,11 +53,11 @@ public class Event implements Serializable {
 		this.eventId = eventId;
 	}
 
-	public Object getDescription() {
+	public String getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(Object description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
@@ -85,19 +85,19 @@ public class Event implements Serializable {
 		this.start = start;
 	}
 
-	public Object getSubject() {
+	public String getSubject() {
 		return this.subject;
 	}
 
-	public void setSubject(Object subject) {
+	public void setSubject(String subject) {
 		this.subject = subject;
 	}
 
-	public Object getThemeColor() {
+	public String getThemeColor() {
 		return this.themeColor;
 	}
 
-	public void setThemeColor(Object themeColor) {
+	public void setThemeColor(String themeColor) {
 		this.themeColor = themeColor;
 	}
 

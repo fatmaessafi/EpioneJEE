@@ -30,7 +30,7 @@ public class Appointment implements Serializable {
 	private int patientId;
 
 	@Column(name="VisitReason")
-	private Object visitReason;
+	private String visitReason;
 
 	//bi-directional many-to-one association to Step
 	@ManyToOne
@@ -85,11 +85,11 @@ public class Appointment implements Serializable {
 		this.patientId = patientId;
 	}
 
-	public Object getVisitReason() {
+	public String getVisitReason() {
 		return this.visitReason;
 	}
 
-	public void setVisitReason(Object visitReason) {
+	public void setVisitReason(String visitReason) {
 		this.visitReason = visitReason;
 	}
 

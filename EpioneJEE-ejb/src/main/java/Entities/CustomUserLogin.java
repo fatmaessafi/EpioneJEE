@@ -20,10 +20,10 @@ public class CustomUserLogin implements Serializable {
 	private int id;
 
 	@Column(name="LoginProvider")
-	private Object loginProvider;
+	private String loginProvider;
 
 	@Column(name="ProviderKey")
-	private Object providerKey;
+	private String providerKey;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
@@ -41,19 +41,19 @@ public class CustomUserLogin implements Serializable {
 		this.id = id;
 	}
 
-	public Object getLoginProvider() {
+	public String getLoginProvider() {
 		return this.loginProvider;
 	}
 
-	public void setLoginProvider(Object loginProvider) {
+	public void setLoginProvider(String loginProvider) {
 		this.loginProvider = loginProvider;
 	}
 
-	public Object getProviderKey() {
+	public String getProviderKey() {
 		return this.providerKey;
 	}
 
-	public void setProviderKey(Object providerKey) {
+	public void setProviderKey(String providerKey) {
 		this.providerKey = providerKey;
 	}
 

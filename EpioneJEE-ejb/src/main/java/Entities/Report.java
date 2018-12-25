@@ -23,7 +23,7 @@ public class Report implements Serializable {
 	private String reportDate;
 
 	@Column(name="ReportDescription")
-	private Object reportDescription;
+	private String reportDescription;
 
 	//bi-directional one-to-one association to Appointment
 	@OneToOne
@@ -49,11 +49,11 @@ public class Report implements Serializable {
 		this.reportDate = reportDate;
 	}
 
-	public Object getReportDescription() {
+	public String getReportDescription() {
 		return this.reportDescription;
 	}
 
-	public void setReportDescription(Object reportDescription) {
+	public void setReportDescription(String reportDescription) {
 		this.reportDescription = reportDescription;
 	}
 

@@ -27,7 +27,7 @@ public class Step implements Serializable {
 	private String lastModificationDate;
 
 	@Column(name="ModificationReason")
-	private Object modificationReason;
+	private String modificationReason;
 
 	@Column(name="NbModifications")
 	private int nbModifications;
@@ -36,10 +36,10 @@ public class Step implements Serializable {
 	private String stepDate;
 
 	@Column(name="StepDescription")
-	private Object stepDescription;
+	private String stepDescription;
 
 	@Column(name="StepSpeciality")
-	private Object stepSpeciality;
+	private String stepSpeciality;
 
 	@Column(name="Validation")
 	private boolean validation;
@@ -85,11 +85,11 @@ public class Step implements Serializable {
 		this.lastModificationDate = lastModificationDate;
 	}
 
-	public Object getModificationReason() {
+	public String getModificationReason() {
 		return this.modificationReason;
 	}
 
-	public void setModificationReason(Object modificationReason) {
+	public void setModificationReason(String modificationReason) {
 		this.modificationReason = modificationReason;
 	}
 
@@ -109,19 +109,19 @@ public class Step implements Serializable {
 		this.stepDate = stepDate;
 	}
 
-	public Object getStepDescription() {
+	public String getStepDescription() {
 		return this.stepDescription;
 	}
 
-	public void setStepDescription(Object stepDescription) {
+	public void setStepDescription(String stepDescription) {
 		this.stepDescription = stepDescription;
 	}
 
-	public Object getStepSpeciality() {
+	public String getStepSpeciality() {
 		return this.stepSpeciality;
 	}
 
-	public void setStepSpeciality(Object stepSpeciality) {
+	public void setStepSpeciality(String stepSpeciality) {
 		this.stepSpeciality = stepSpeciality;
 	}
 

@@ -24,22 +24,22 @@ public class User implements Serializable {
 	private int accessFailedCount;
 
 	@Column(name="Allergies")
-	private Object allergies;
+	private String allergies;
 
 	@Column(name="BirthDate")
 	private String birthDate;
 
 	@Column(name="City")
-	private Object city;
+	private String city;
 
 	@Column(name="CivilStatus")
-	private Object civilStatus;
+	private String civilStatus;
 
 	@Column(name="Discriminator")
-	private Object discriminator;
+	private String discriminator;
 
 	@Column(name="Email")
-	private Object email;
+	private String email;
 
 	@Column(name="EmailConfirmed")
 	private boolean emailConfirmed;
@@ -48,19 +48,19 @@ public class User implements Serializable {
 	private boolean enabled;
 
 	@Column(name="FirstName")
-	private Object firstName;
+	private String firstName;
 
 	@Column(name="Gender")
-	private Object gender;
+	private String gender;
 
 	@Column(name="HomeAddress")
-	private Object homeAddress;
+	private String homeAddress;
 
 	@Column(name="LastName")
-	private Object lastName;
+	private String lastName;
 
 	@Column(name="Location")
-	private Object location;
+	private String location;
 
 	@Column(name="LockoutEnabled")
 	private boolean lockoutEnabled;
@@ -69,31 +69,31 @@ public class User implements Serializable {
 	private String lockoutEndDateUtc;
 
 	@Column(name="Password")
-	private Object password;
+	private String password;
 
 	@Column(name="PasswordHash")
-	private Object passwordHash;
+	private String passwordHash;
 
 	@Column(name="PhoneNumber")
-	private Object phoneNumber;
+	private String phoneNumber;
 
 	@Column(name="PhoneNumberConfirmed")
 	private boolean phoneNumberConfirmed;
 
 	@Column(name="Profession")
-	private Object profession;
+	private String profession;
 
 	@Column(name="RegistrationDate")
 	private String registrationDate;
 
 	@Column(name="SecurityStamp")
-	private Object securityStamp;
+	private String securityStamp;
 
 	@Column(name="Speciality")
-	private Object speciality;
+	private String speciality;
 
 	@Column(name="SpecialReq")
-	private Object specialReq;
+	private String specialReq;
 
 	@Column(name="Surgeon")
 	private boolean surgeon;
@@ -102,7 +102,7 @@ public class User implements Serializable {
 	private boolean twoFactorEnabled;
 
 	@Column(name="UserName")
-	private Object userName;
+	private String userName;
 
 	//bi-directional many-to-one association to Analytic
 	@OneToMany(mappedBy="user")
@@ -163,11 +163,11 @@ public class User implements Serializable {
 		this.accessFailedCount = accessFailedCount;
 	}
 
-	public Object getAllergies() {
+	public String getAllergies() {
 		return this.allergies;
 	}
 
-	public void setAllergies(Object allergies) {
+	public void setAllergies(String allergies) {
 		this.allergies = allergies;
 	}
 
@@ -179,35 +179,35 @@ public class User implements Serializable {
 		this.birthDate = birthDate;
 	}
 
-	public Object getCity() {
+	public String getCity() {
 		return this.city;
 	}
 
-	public void setCity(Object city) {
+	public void setCity(String city) {
 		this.city = city;
 	}
 
-	public Object getCivilStatus() {
+	public String getCivilStatus() {
 		return this.civilStatus;
 	}
 
-	public void setCivilStatus(Object civilStatus) {
+	public void setCivilStatus(String civilStatus) {
 		this.civilStatus = civilStatus;
 	}
 
-	public Object getDiscriminator() {
+	public String getDiscriminator() {
 		return this.discriminator;
 	}
 
-	public void setDiscriminator(Object discriminator) {
+	public void setDiscriminator(String discriminator) {
 		this.discriminator = discriminator;
 	}
 
-	public Object getEmail() {
+	public String getEmail() {
 		return this.email;
 	}
 
-	public void setEmail(Object email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
@@ -227,43 +227,43 @@ public class User implements Serializable {
 		this.enabled = enabled;
 	}
 
-	public Object getFirstName() {
+	public String getFirstName() {
 		return this.firstName;
 	}
 
-	public void setFirstName(Object firstName) {
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	public Object getGender() {
+	public String getGender() {
 		return this.gender;
 	}
 
-	public void setGender(Object gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
-	public Object getHomeAddress() {
+	public String getHomeAddress() {
 		return this.homeAddress;
 	}
 
-	public void setHomeAddress(Object homeAddress) {
+	public void setHomeAddress(String homeAddress) {
 		this.homeAddress = homeAddress;
 	}
 
-	public Object getLastName() {
+	public String getLastName() {
 		return this.lastName;
 	}
 
-	public void setLastName(Object lastName) {
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-	public Object getLocation() {
+	public String getLocation() {
 		return this.location;
 	}
 
-	public void setLocation(Object location) {
+	public void setLocation(String location) {
 		this.location = location;
 	}
 
@@ -283,27 +283,27 @@ public class User implements Serializable {
 		this.lockoutEndDateUtc = lockoutEndDateUtc;
 	}
 
-	public Object getPassword() {
+	public String getPassword() {
 		return this.password;
 	}
 
-	public void setPassword(Object password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public Object getPasswordHash() {
+	public String getPasswordHash() {
 		return this.passwordHash;
 	}
 
-	public void setPasswordHash(Object passwordHash) {
+	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = passwordHash;
 	}
 
-	public Object getPhoneNumber() {
+	public String getPhoneNumber() {
 		return this.phoneNumber;
 	}
 
-	public void setPhoneNumber(Object phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -315,11 +315,11 @@ public class User implements Serializable {
 		this.phoneNumberConfirmed = phoneNumberConfirmed;
 	}
 
-	public Object getProfession() {
+	public String getProfession() {
 		return this.profession;
 	}
 
-	public void setProfession(Object profession) {
+	public void setProfession(String profession) {
 		this.profession = profession;
 	}
 
@@ -331,27 +331,27 @@ public class User implements Serializable {
 		this.registrationDate = registrationDate;
 	}
 
-	public Object getSecurityStamp() {
+	public String getSecurityStamp() {
 		return this.securityStamp;
 	}
 
-	public void setSecurityStamp(Object securityStamp) {
+	public void setSecurityStamp(String securityStamp) {
 		this.securityStamp = securityStamp;
 	}
 
-	public Object getSpeciality() {
+	public String getSpeciality() {
 		return this.speciality;
 	}
 
-	public void setSpeciality(Object speciality) {
+	public void setSpeciality(String speciality) {
 		this.speciality = speciality;
 	}
 
-	public Object getSpecialReq() {
+	public String getSpecialReq() {
 		return this.specialReq;
 	}
 
-	public void setSpecialReq(Object specialReq) {
+	public void setSpecialReq(String specialReq) {
 		this.specialReq = specialReq;
 	}
 
@@ -371,11 +371,11 @@ public class User implements Serializable {
 		this.twoFactorEnabled = twoFactorEnabled;
 	}
 
-	public Object getUserName() {
+	public String getUserName() {
 		return this.userName;
 	}
 
-	public void setUserName(Object userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 

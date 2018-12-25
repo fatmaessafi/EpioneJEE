@@ -20,7 +20,7 @@ public class Message implements Serializable {
 	private int messageId;
 
 	@Column(name="MessageContent")
-	private Object messageContent;
+	private String messageContent;
 
 	@Column(name="MessageDate")
 	private String messageDate;
@@ -41,11 +41,11 @@ public class Message implements Serializable {
 		this.messageId = messageId;
 	}
 
-	public Object getMessageContent() {
+	public String getMessageContent() {
 		return this.messageContent;
 	}
 
-	public void setMessageContent(Object messageContent) {
+	public void setMessageContent(String messageContent) {
 		this.messageContent = messageContent;
 	}
 
